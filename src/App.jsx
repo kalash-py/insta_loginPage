@@ -26,22 +26,22 @@ export default function App() {
   const isAdmin = currentPath.startsWith('/admin');
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-white text-slate-900">
+    <div className="min-h-screen min-h-[100dvh] flex flex-col font-sans bg-white text-slate-900 overflow-x-hidden">
       {/* Navigation Header (ONLY shown when inside Admin Panel for exit button) */}
       {isAdmin && (
         <header className="bg-white border-b border-slate-200 sticky top-0 z-10 shadow-sm">
-          <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <div className="max-w-6xl mx-auto px-3 py-2.5 sm:px-4 sm:py-3 flex items-center justify-between">
+            <div className="flex items-center gap-2.5 sm:gap-3">
               <button
                 onClick={() => navigateTo('/login')}
                 title="Exit Admin Panel"
-                className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center justify-center focus:outline-none"
+                className="p-2 sm:p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 transition flex items-center justify-center focus:outline-none touch-manipulation"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
               </button>
-              <span className="font-bold text-base text-slate-800">Admin Dashboard</span>
+              <span className="font-bold text-sm sm:text-base text-slate-800">Admin Dashboard</span>
             </div>
           </div>
         </header>
@@ -50,7 +50,7 @@ export default function App() {
       {/* Main Body */}
       <main className="flex-1 flex flex-col justify-between bg-white">
         {isAdmin ? (
-          <div className="w-full max-w-6xl mx-auto p-4 flex-1">
+          <div className="w-full max-w-6xl mx-auto px-2 py-3 sm:p-4 flex-1">
             <AdminPanel />
           </div>
         ) : (

