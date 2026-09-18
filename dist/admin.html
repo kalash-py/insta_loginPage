@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | User Responses</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container admin-container">
+    <header class="app-header">
+      <div class="logo-area">
+        <svg class="logo-icon admin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <span>Admin Panel</span>
+        <span class="badge live-badge"><span class="pulse-dot"></span> Live Updates</span>
+      </div>
+      <a href="/" class="admin-link">&larr; User Submission Portal</a>
+    </header>
+
+    <main class="admin-wrapper">
+      <!-- Metrics & Controls Bar -->
+      <section class="admin-stats-grid">
+        <div class="stat-card">
+          <span class="stat-title">Total Submissions</span>
+          <span class="stat-value" id="totalCount">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-title">Last Activity</span>
+          <span class="stat-value text-sm" id="lastUpdated">Just now</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-title">Auto-Refresh</span>
+          <span class="stat-value text-sm text-green">Active (3s)</span>
+        </div>
+      </section>
+
+      <section class="admin-controls">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search by name, email, or message content...">
+        </div>
+        <div class="action-buttons">
+          <button id="refreshBtn" class="btn btn-secondary">Refresh Now</button>
+          <button id="clearAllBtn" class="btn btn-danger">Clear All</button>
+        </div>
+      </section>
+
+      <!-- Submissions Table / Cards -->
+      <section class="table-container">
+        <div class="table-header-title">
+          <h3>Submitted User Responses</h3>
+        </div>
+
+        <div id="loadingSpinner" class="spinner-wrapper">
+          <div class="spinner"></div>
+          <p>Fetching latest responses...</p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table" id="responsesTable">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Category</th>
+                <th>Message / Data</th>
+                <th>Device</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <div id="emptyState" class="empty-state hidden">
+          <p>No user responses submitted yet. Submissions from the portal will appear here in real-time.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
